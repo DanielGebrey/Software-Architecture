@@ -1,7 +1,7 @@
-package Service;
+package books.Service;
 
-import Model.Book;
-import Repository.BookRepo;
+import books.Model.Book;
+import books.Repository.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class BookService {
  public List<Book> getAllBooks(){
         return bookRepo.findAll();
     }
-    public Book getBookById(Long id){
+    public Book getBookById(String id){
      Book book = bookRepo.findById(id).orElse(null);
         return book;
     }
@@ -31,7 +31,7 @@ public class BookService {
         bookRepo.save(updatedBook);
         return updatedBook;
     }
-    public void deleteBook(Long id){
+    public void deleteBook(String id){
      Book book = bookRepo.findById(id).orElseThrow(()->new RuntimeException(String.format("Cannot find book with isbn %s",id)));
         bookRepo.delete(book);
 }

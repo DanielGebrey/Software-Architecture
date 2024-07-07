@@ -1,8 +1,8 @@
-package Controller;
+package books.Controller;
 
-import Model.Book;
-import Repository.BookRepo;
-import Service.BookService;
+import books.Model.Book;
+import books.Repository.BookRepo;
+import books.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +19,8 @@ public class BookController {
         List<Book> books = bookService.getAllBooks();
         return ResponseEntity.ok(books);
     }
-    @GetMapping("/id")
-    public ResponseEntity<Book> getById(@PathVariable Long id){
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> getById(@PathVariable String id){
         Book book = bookService.getBookById(id);
         return ResponseEntity.ok(book);
     }
@@ -34,8 +34,8 @@ public class BookController {
         Book updatedBook = bookService.updateBook(book);
         return ResponseEntity.ok(updatedBook);
     }
-    @DeleteMapping("/id")
-    public ResponseEntity<String> delete(@PathVariable Long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable String id){
         bookService.deleteBook(id);
         return ResponseEntity.ok("Book deleted");
     }

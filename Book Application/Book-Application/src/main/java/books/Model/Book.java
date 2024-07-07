@@ -1,4 +1,4 @@
-package Model;
+package books.Model;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,8 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long isbn;
+    private String isbn;
     private String author;
     private String title;
     private double price;
